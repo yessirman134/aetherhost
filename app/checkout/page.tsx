@@ -58,7 +58,13 @@ export default async function CheckoutPage({
   const plan = plans[selectedPlan] || plans.grass;
 
   return (
-    <main className="min-h-screen bg-[#0f172a] px-6 py-16 text-white">
+    <main
+  className="min-h-screen px-6 py-16 text-white"
+  style={{
+    background:
+      "linear-gradient(to bottom, #020617, #0f172a, #1e293b)",
+  }}
+>
       <div className="mx-auto max-w-5xl">
         <a
           href="/"
