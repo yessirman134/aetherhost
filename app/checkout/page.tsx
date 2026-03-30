@@ -63,8 +63,8 @@ export default async function CheckoutPage({
   style={{
     background:
       "linear-gradient(to bottom, #020617, #0f172a, #1e293b)",
-  }}
->
+  }}>
+
       <div className="mx-auto max-w-5xl">
         <a
           href="/"
