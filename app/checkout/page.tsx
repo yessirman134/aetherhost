@@ -8,6 +8,7 @@ export default function CheckoutPage({
   const plans: Record<
     string,
     {
+      id: string;
       name: string;
       price: string;
       ram: string;
@@ -16,6 +17,7 @@ export default function CheckoutPage({
     }
   > = {
     grass: {
+      id: "grass",
       name: "Grass",
       price: "£3.99/mo",
       ram: "2 GB RAM",
@@ -23,6 +25,7 @@ export default function CheckoutPage({
       storage: "50 GB NVMe SSD",
     },
     stone: {
+      id: "stone",
       name: "Stone",
       price: "£6.99/mo",
       ram: "4 GB RAM",
@@ -30,6 +33,7 @@ export default function CheckoutPage({
       storage: "100 GB NVMe SSD",
     },
     redstone: {
+      id: "redstone",
       name: "Redstone",
       price: "£9.99/mo",
       ram: "6 GB RAM",
@@ -37,6 +41,7 @@ export default function CheckoutPage({
       storage: "140 GB NVMe SSD",
     },
     diamond: {
+      id: "diamond",
       name: "Diamond",
       price: "£13.99/mo",
       ram: "8 GB RAM",
@@ -44,6 +49,7 @@ export default function CheckoutPage({
       storage: "180 GB NVMe SSD",
     },
     netherite: {
+      id: "netherite",
       name: "Netherite",
       price: "£19.99/mo",
       ram: "12 GB RAM",
@@ -55,25 +61,114 @@ export default function CheckoutPage({
   const plan = plans[selectedPlan] || plans.grass;
 
   return (
-    <main className="min-h-screen bg-[#060816] px-6 py-16 text-white">
-      <div className="mx-auto max-w-4xl">
-        <h1 className="text-4xl font-bold">Checkout</h1>
+    <main className="relative min-h-screen overflow-hidden bg-[#060816] px-6 py-16 text-white">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(236,72,153,0.14),transparent_30%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.18),transparent_35%)]" />
+        <div className="absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-cyan-500/20 blur-[140px]" />
+        <div className="absolute right-0 top-24 h-[26rem] w-[26rem] rounded-full bg-fuchsia-500/15 blur-[140px]" />
+        <div className="absolute bottom-0 left-1/3 h-[30rem] w-[30rem] rounded-full bg-blue-600/20 blur-[160px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
+      </div>
 
-        <div className="mt-6 rounded-2xl bg-white/5 p-6">
-          <h2 className="text-2xl font-bold">{plan.name}</h2>
-          <p className="text-xl">{plan.price}</p>
-          <p>{plan.ram}</p>
-          <p>{plan.players}</p>
-          <p>{plan.storage}</p>
+      <div className="mx-auto max-w-5xl">
+        <a
+          href="/"
+          className="inline-flex items-center rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white"
+        >
+          ← Back to homepage
+        </a>
 
-          <button
-            onClick={() =>
-              alert("✅ Order received! We will set up your server shortly.")
-            }
-            className="mt-6 w-full rounded-xl bg-blue-500 px-4 py-3 font-semibold"
-          >
-            Proceed to Payment
-          </button>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl">
+            <div className="inline-block rounded-full border border-cyan-400/20 bg-white/5 px-4 py-1 text-sm text-cyan-300 shadow-sm">
+              Complete your order
+            </div>
+
+            <h1 className="mt-6 text-4xl font-bold sm:text-5xl">
+              Buy your Minecraft server
+            </h1>
+
+            <p className="mt-4 text-slate-300">
+              You selected the{" "}
+              <span className="font-semibold text-white">{plan.name}</span> plan.
+            </p>
+
+            <form className="mt-8 space-y-5">
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your full name"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none backdrop-blur transition focus:border-cyan-400/40"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none backdrop-blur transition focus:border-cyan-400/40"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-slate-300">
+                  Server Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="My Survival Server"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none backdrop-blur transition focus:border-cyan-400/40"
+                />
+              </div>
+
+              <a
+                href={`/order-success?plan=${plan.id}`}
+                className="block w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-center font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
+              >
+                Proceed to Payment
+              </a>
+            </form>
+          </div>
+
+          <div className="h-fit rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl">
+            <div className="text-sm uppercase tracking-[0.2em] text-slate-400">
+              Order Summary
+            </div>
+
+            <h2 className="mt-4 text-3xl font-bold">{plan.name}</h2>
+            <div className="mt-3 text-5xl font-bold">{plan.price}</div>
+
+            <div className="mt-8 space-y-4 text-slate-200">
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="text-sm text-slate-400">RAM</div>
+                <div className="mt-1 text-lg font-semibold">{plan.ram}</div>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="text-sm text-slate-400">Players</div>
+                <div className="mt-1 text-lg font-semibold">{plan.players}</div>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="text-sm text-slate-400">Storage</div>
+                <div className="mt-1 text-lg font-semibold">{plan.storage}</div>
+              </div>
+            </div>
+
+            <ul className="mt-8 space-y-3 text-sm text-slate-300">
+              <li>• Instant deployment</li>
+              <li>• DDoS protection included</li>
+              <li>• Automatic backups</li>
+              <li>• Full file and console access</li>
+            </ul>
+          </div>
         </div>
       </div>
     </main>
