@@ -1,12 +1,10 @@
-type SearchParams = Promise<{ plan?: string }>;
+"use client";
 
-export default async function CheckoutPage({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const params = await searchParams;
-  const selectedPlan = params.plan || "grass";
+import { useSearchParams } from "next/navigation";
+
+export default function CheckoutPage() {
+  const searchParams = useSearchParams();
+  const selectedPlan = searchParams.get("plan") || "grass";
 
   const plans: Record<
     string,
@@ -125,15 +123,15 @@ export default async function CheckoutPage({
                 />
               </div>
 
-             <button
-  type="button"
-  onClick={() => {
-    alert("✅ Order received!\n\nWe will set up your server shortly.");
-  }}
-  className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
->
-  Proceed to Payment
-</button>
+              <button
+                type="button"
+                onClick={() => {
+                  alert("✅ Order received!\n\nWe will set up your server shortly.");
+                }}
+                className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
+              >
+                Proceed to Payment
+              </button>
             </form>
           </div>
 
