@@ -58,20 +58,16 @@ export default async function CheckoutPage({
   const plan = plans[selectedPlan] || plans.grass;
 
   return (
-<main className="relative min-h-screen overflow-hidden text-white bg-[#060816] px-6 py-16">
+    <main className="relative min-h-screen overflow-hidden bg-[#060816] px-6 py-16 text-white">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(236,72,153,0.14),transparent_30%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.18),transparent_35%)]" />
+        <div className="absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-cyan-500/20 blur-[140px]" />
+        <div className="absolute right-0 top-24 h-[26rem] w-[26rem] rounded-full bg-fuchsia-500/15 blur-[140px]" />
+        <div className="absolute bottom-0 left-1/3 h-[30rem] w-[30rem] rounded-full bg-blue-600/20 blur-[160px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
+      </div>
 
-<div className="absolute inset-0 -z-10">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(236,72,153,0.14),transparent_30%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.18),transparent_35%)]" />
-
-  <div className="absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-cyan-500/20 blur-[140px]" />
-  <div className="absolute right-0 top-24 h-[26rem] w-[26rem] rounded-full bg-fuchsia-500/15 blur-[140px]" />
-  <div className="absolute bottom-0 left-1/3 h-[30rem] w-[30rem] rounded-full bg-blue-600/20 blur-[160px]" />
-
-  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
-
-  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
-</div>
-  
       <div className="mx-auto max-w-5xl">
         <a
           href="/"
@@ -81,8 +77,8 @@ export default async function CheckoutPage({
         </a>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl">
-            <div className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm text-slate-300">
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl">
+            <div className="inline-block rounded-full border border-cyan-400/20 bg-white/5 px-4 py-1 text-sm text-cyan-300 shadow-sm">
               Complete your order
             </div>
 
@@ -91,7 +87,8 @@ export default async function CheckoutPage({
             </h1>
 
             <p className="mt-4 text-slate-300">
-              You selected the <span className="font-semibold text-white">{plan.name}</span> plan.
+              You selected the{" "}
+              <span className="font-semibold text-white">{plan.name}</span> plan.
             </p>
 
             <form className="mt-8 space-y-5">
@@ -102,7 +99,7 @@ export default async function CheckoutPage({
                 <input
                   type="text"
                   placeholder="Your full name"
-                  className="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none backdrop-blur transition focus:border-cyan-400/40"
                 />
               </div>
 
@@ -113,7 +110,7 @@ export default async function CheckoutPage({
                 <input
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none backdrop-blur transition focus:border-cyan-400/40"
                 />
               </div>
 
@@ -124,20 +121,20 @@ export default async function CheckoutPage({
                 <input
                   type="text"
                   placeholder="My Survival Server"
-                  className="w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-white outline-none backdrop-blur transition focus:border-cyan-400/40"
                 />
               </div>
 
               <button
                 type="button"
-                className="w-full rounded-2xl bg-emerald-400 px-6 py-3 font-semibold text-slate-950 transition hover:scale-[1.02]"
+                className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
               >
                 Proceed to Payment
               </button>
             </form>
           </div>
 
-          <div className="h-fit rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl">
+          <div className="h-fit rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl">
             <div className="text-sm uppercase tracking-[0.2em] text-slate-400">
               Order Summary
             </div>
@@ -161,6 +158,13 @@ export default async function CheckoutPage({
                 <div className="mt-1 text-lg font-semibold">{plan.storage}</div>
               </div>
             </div>
+
+            <ul className="mt-8 space-y-3 text-sm text-slate-300">
+              <li>• Instant deployment</li>
+              <li>• DDoS protection included</li>
+              <li>• Automatic backups</li>
+              <li>• Full file and console access</li>
+            </ul>
           </div>
         </div>
       </div>
