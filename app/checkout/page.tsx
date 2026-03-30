@@ -14,6 +14,7 @@ export default function CheckoutPage({
       ram: string;
       players: string;
       storage: string;
+      paypalLink: string;
     }
   > = {
     grass: {
@@ -23,6 +24,7 @@ export default function CheckoutPage({
       ram: "2 GB RAM",
       players: "Up to 8 players",
       storage: "50 GB NVMe SSD",
+      paypalLink: "PASTE_YOUR_PAYPAL_LINK_HERE_FOR_GRASS",
     },
     stone: {
       id: "stone",
@@ -31,6 +33,7 @@ export default function CheckoutPage({
       ram: "4 GB RAM",
       players: "Up to 16 players",
       storage: "100 GB NVMe SSD",
+      paypalLink: "PASTE_YOUR_PAYPAL_LINK_HERE_FOR_STONE",
     },
     redstone: {
       id: "redstone",
@@ -39,6 +42,7 @@ export default function CheckoutPage({
       ram: "6 GB RAM",
       players: "Up to 24 players",
       storage: "140 GB NVMe SSD",
+      paypalLink: "PASTE_YOUR_PAYPAL_LINK_HERE_FOR_REDSTONE",
     },
     diamond: {
       id: "diamond",
@@ -47,6 +51,7 @@ export default function CheckoutPage({
       ram: "8 GB RAM",
       players: "Up to 40 players",
       storage: "180 GB NVMe SSD",
+      paypalLink: "PASTE_YOUR_PAYPAL_LINK_HERE_FOR_DIAMOND",
     },
     netherite: {
       id: "netherite",
@@ -55,6 +60,7 @@ export default function CheckoutPage({
       ram: "12 GB RAM",
       players: "Up to 70 players",
       storage: "250 GB NVMe SSD",
+      paypalLink: "PASTE_YOUR_PAYPAL_LINK_HERE_FOR_NETHERITE",
     },
   };
 
@@ -129,10 +135,12 @@ export default function CheckoutPage({
               </div>
 
               <a
-                href={`/order-success?plan=${plan.id}`}
+                href={plan.paypalLink}
+                target="_blank"
+                rel="noreferrer"
                 className="block w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-center font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
               >
-                Proceed to Payment
+                Pay with PayPal
               </a>
             </form>
           </div>
@@ -161,13 +169,6 @@ export default function CheckoutPage({
                 <div className="mt-1 text-lg font-semibold">{plan.storage}</div>
               </div>
             </div>
-
-            <ul className="mt-8 space-y-3 text-sm text-slate-300">
-              <li>• Instant deployment</li>
-              <li>• DDoS protection included</li>
-              <li>• Automatic backups</li>
-              <li>• Full file and console access</li>
-            </ul>
           </div>
         </div>
       </div>
